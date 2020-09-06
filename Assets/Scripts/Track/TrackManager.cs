@@ -92,6 +92,14 @@ public class TrackManager : MonoBehaviour {
             return true;
         }
 
+        float distance = Vector3.Distance (m_InitialTrackPosition, m_NextTrackPosition);
+
+        if (distance >= 50) {
+            checkpointIndex++;
+            m_InitialTrackPosition = m_NextTrackPosition;
+            return true;
+        }
+
         return false;
     }
 
