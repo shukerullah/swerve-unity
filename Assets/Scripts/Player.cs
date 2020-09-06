@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
     public bool isGoingRight = false;
 
-    public CameraFollow cameraFollow;
+    public Follow cameraFollow;
 
     void Update () {
         if (Input.GetMouseButtonDown (0)) {
