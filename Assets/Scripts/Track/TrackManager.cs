@@ -26,14 +26,18 @@ public class TrackManager : MonoBehaviour {
     public float checkpointMargin = 24;
 
     private const int k_StartingRoadPoolSize = 10;
-    private const int k_StartingCornerPoolSize = 10;
-    private const int k_StartingCheckpointPoolSize = 2;
+    private const int k_StartingCornerPoolSize = 8;
+    private const int k_StartingCheckpointPoolSize = 1;
 
     private bool m_IsRightTrackNext = false;
 
     private float m_LastTrackMargin = 0;
 
     public Vector3 initialTrackPosition = new Vector3 (0, 0, 0);
+
+    // public int roadPoolSize = 0;
+    // public int cornerPoolSize = 0;
+    // public int checkpointPoolSize = 0;
 
     private Vector3 m_NextTrackPosition = Vector3.zero;
     public Vector3 NextTrackPosition {
@@ -42,8 +46,6 @@ public class TrackManager : MonoBehaviour {
     }
 
     private Vector3 m_InitialTrackPosition = Vector3.zero;
-
-    private int checkpointIndex = -1;
 
     static protected TrackManager s_Instance;
     static public TrackManager Instance { get { return s_Instance; } }
@@ -61,6 +63,12 @@ public class TrackManager : MonoBehaviour {
     void Start () {
         Begin ();
     }
+
+    // void Update () {
+    // roadPoolSize = Road.pool.m_FreeInstances.Count;
+    // cornerPoolSize = Corner.pool.m_FreeInstances.Count;
+    // checkpointPoolSize = Checkpoint.pool.m_FreeInstances.Count;
+    // }
 
     void Begin () {
         Road.pool = new InfiniteTerrain.Pool (road, k_StartingRoadPoolSize);
@@ -87,15 +95,15 @@ public class TrackManager : MonoBehaviour {
     }
 
     private bool IsCheckpointNext () {
-        if (checkpointIndex < 0) {
-            checkpointIndex++;
+        if (GameController.Instance.checkpointIndex < 0) {
+            GameController.Instance.checkpointIndex++;
             return true;
         }
 
         float distance = Vector3.Distance (m_InitialTrackPosition, m_NextTrackPosition);
 
-        if (distance >= 50) {
-            checkpointIndex++;
+        if (distance >= GameController.Instance.checkpoints[GameController.Instance.checkpointIndex].distance) {
+            GameController.Instance.checkpointIndex++;
             m_InitialTrackPosition = m_NextTrackPosition;
             return true;
         }
@@ -108,7 +116,7 @@ public class TrackManager : MonoBehaviour {
     }
 
     private bool IsCornerNext () {
-        float probability = GetRandom (0f, 1f);
+        float probability = GameController.Instance.GetRandom (0f, 1f);
         return probability <= cornerProbability;
     }
 
@@ -144,9 +152,5 @@ public class TrackManager : MonoBehaviour {
 
         m_NextTrackPosition = position;
         m_LastTrackMargin = trackMargin;
-    }
-
-    private float GetRandom (float min, float max) {
-        return Mathf.Round (Random.Range (min, max) * 10) / 10;
     }
 }

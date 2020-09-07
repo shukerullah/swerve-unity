@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8552028766439034594}
   - component: {fileID: 2707333740724400667}
   - component: {fileID: 8673101642115511540}
+  - component: {fileID: 4482216175456354973}
   m_Layer: 0
   m_Name: Corner
   m_TagString: Untagged
@@ -95,3 +96,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 18
   trackType: 1
+--- !u!65 &4482216175456354973
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4444691907957524167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.250002, y: 1.6145129, z: 8.250004}
+  m_Center: {x: -0.12499881, y: 0.8172749, z: -0.124999285}

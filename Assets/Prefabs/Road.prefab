@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3054956554923416329}
   - component: {fileID: 8744279250934032368}
   - component: {fileID: -3144336591322042270}
+  - component: {fileID: 1881981302022446649}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -95,3 +96,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 18
   trackType: 0
+--- !u!65 &1881981302022446649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7018083398928290604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.000053, y: 1.6245317, z: 8.500004}
+  m_Center: {x: 0.00002670288, y: 0.81226563, z: 0.00000023841858}
